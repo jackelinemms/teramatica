@@ -5,6 +5,13 @@ import App from "./App"; // quando um arquivo é .js ou .jsx podemos omitir a ex
 // é uma convenção de desenvolvimento react que componentes do projeto são salvos com letra maiúscula, para diferencia-los de outros arquivos .js/.jsx que não são componentes
 import reportWebVitals from "./reportWebVitals";
 
+// imports pra fazer os dropdowns do bootstrap funcionarem
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
+import $ from "jquery";
+import Popper from "popper.js";
+
 const root = ReactDOM.createRoot(document.getElementById("root")); // esse código está indicando o local onde toda a aplicação será renderizada, no caso a div com id "root" no arquivo index.html na pasta public.
 root.render(<App />);
 

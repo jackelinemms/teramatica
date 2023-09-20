@@ -8162,6 +8162,21 @@ h1, h2, h3, h4, h5,
   font-family: "Comfortaa", Arial, sans-serif;
   color: #000; }
 
+.brand {
+  font-weight: 400;
+  font-family: "Comfortaa";
+  color: #ff5d7d; 
+  font-style: normal
+}
+
+.brand-logo{
+  margin-left: 10px;
+}
+
+  i {
+    margin-left: 10px;
+  }
+
 .bg-primary {
   background: #66e0f7 !important; }
 

@@ -1,26 +1,7 @@
 import React from "react";
-//import login from "../../login.svg";
 import math from "../../math.svg";
 
-import "../../bootstrap/bootstrap.min.css";
-import "../../bootstrap/style.css";
-
-export default function Login() {
-  fetch("http://localhost:8080/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    //pegar o conteudo input do usuario
-    body: JSON.stringify({
-      email: "anted@gmail.com",
-      password: "abc123",
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    });
+export default function Registrar() {
   return (
     <div className="form-div">
       <main className="form-signin">
@@ -53,7 +34,7 @@ export default function Login() {
             </label>
           </div>
           <button className="w-100 btn btn-lg btn-primary" type="submit">
-            Entrar
+            Registrar
           </button>
         </form>
       </main>
