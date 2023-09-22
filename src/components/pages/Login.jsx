@@ -6,7 +6,7 @@ import "../../bootstrap/bootstrap.min.css";
 import "../../bootstrap/style.css";
 
 export default function Login() {
-  fetch("http://localhost:8080/users/login", {
+  fetch("https://erin-troubled-duckling.cyclic.app/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
