@@ -19,7 +19,7 @@ function App() {
           path="/"
           element={
             // <div className="d-flex main-div justify-content-center">
-            <Home />
+            <Login />
             // </div>
           }
         />
