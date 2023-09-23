@@ -10,6 +10,7 @@ export default function Login() {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      //passar o authorizaton com o bearer token
     },
     //pegar o conteudo input do usuario
     body: JSON.stringify({
@@ -19,6 +20,8 @@ export default function Login() {
   })
     .then((response) => response.json())
     .then((data) => {
+      localStorage.setItem("access", data.access);
+      localStorage.setItem("refresh", data.refresh);
       console.log(data);
     });
   return (
