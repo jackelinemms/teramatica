@@ -5,7 +5,7 @@ import Login from "./components/pages/Login.jsx";
 import Aulas from "./components/pages/Aulas.jsx";
 import Users from "./components/pages/Users";
 import Perfil from "./components/pages/Perfil";
-import Registrar from "./components/pages/Registrar";
+import Cadastrar from "./components/pages/Cadastrar";
 
 function App() {
   //essa é uma função que retorna .jsx -> isso é um componente. Por convenção o nome de componentes sempre começam em maiúscula
@@ -32,11 +32,23 @@ function App() {
           }
         />
         <Route path="/aulas" element={<Aulas />} />
-        <Route path="/registrar" element={<div className="d-flex main-div justify-content-center">
-        <Registrar />
-            </div>} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/:userId" element={<Perfil />} />\
+        <Route
+          path="/cadastro"
+          element={
+            <div className="d-flex main-div justify-content-center">
+              <Cadastrar />
+            </div>
+          }
+        />
+        <Route
+          path="/usuarios"
+          element={
+            <div className="d-flex main-div justify-content-center">
+              <Users />
+            </div>
+          }
+        />
+        <Route path="/usuarios/:userId" element={<Perfil />} />\
         <Route path="*" element={<h1>Página não encontrada!</h1>} />
       </Routes>
     </BrowserRouter>

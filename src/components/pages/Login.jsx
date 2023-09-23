@@ -1,33 +1,45 @@
 import React from "react";
-//import login from "../../login.svg";
+import { useNavigate } from "react-router-dom";
 import math from "../../math.svg";
 
-import "../../bootstrap/bootstrap.min.css";
-import "../../bootstrap/style.css";
+import AppLoading from "../organisms/AppLoading";
+import { saveToken } from "../helpers/Auth";
 
 export default function Login() {
-  fetch("https://erin-troubled-duckling.cyclic.app/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      //passar o authorizaton com o bearer token
-    },
-    //pegar o conteudo input do usuario
-    body: JSON.stringify({
-      email: "anted@gmail.com",
-      password: "abc123",
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      localStorage.setItem("access", data.access);
-      localStorage.setItem("refresh", data.refresh);
-      console.log(data);
-    });
-  return (
+  const navigate = useNavigate();
+
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    setIsLoading(true);
+
+    fetch("https://erin-troubled-duckling.cyclic.app/users/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then(({ token }) => {
+        saveToken(token);
+        navigate("/usuarios");
+      })
+      .catch(() => {
+        setEmail("");
+        setPassword("");
+        setIsLoading(false);
+      });
+  };
+
+  return isLoading ? (
+    <AppLoading />
+  ) : (
     <div className="form-div">
       <main className="form-signin">
-        <form>
+        <form onSubmit={handleLogin}>
           <img className="mb-4" src={math} width="72" height="72" alt="login" />
           <h1 className="h3 mb-3 fw-normal login-title">Teramatica</h1>
 
@@ -35,26 +47,25 @@ export default function Login() {
             <input
               type="email"
               className="form-control"
-              id="floatingInput"
+              id="email"
               placeholder=" "
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
             />
-            <label for="floatingInput">E-mail</label>
+            <label htmlFor="email">E-mail</label>
           </div>
           <div className="form-floating">
             <input
               type="password"
               className="form-control"
-              id="floatingPassword"
+              id="password"
               placeholder=" "
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
             />
-            <label for="floatingPassword">Senha</label>
+            <label htmlFor="password">Senha</label>
           </div>
 
-          <div className="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Manter-me conectado
-            </label>
-          </div>
           <button className="w-100 btn btn-lg btn-primary" type="submit">
             Entrar
           </button>

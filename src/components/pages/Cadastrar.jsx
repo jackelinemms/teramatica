@@ -21,7 +21,7 @@ export default function Registrar() {
 
   return (
     <div className="form-div">
-      <main className="form-signin">
+      <main className="form-register">
         <form onSubmit={handleFormCadastro}>
           <img
             className="mb-4"
@@ -30,7 +30,7 @@ export default function Registrar() {
             height="72"
             alt="Teramática"
           />
-          <h1 className="h3 mb-3 fw-normal login-title">Registre-se</h1>
+          <h1 className="h3 mb-3 fw-normal login-title">Cadastre-se</h1>
 
           <div className="form-floating">
             <input
@@ -68,7 +68,7 @@ export default function Registrar() {
           </div>
 
           <button className="w-100 btn btn-lg btn-primary" type="submit">
-            Registrar
+            Cadastrar
           </button>
         </form>
       </main>
