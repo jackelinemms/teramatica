@@ -1,0 +1,64 @@
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Didact+Gothic&display=swap');
+
+*{
+    font-family: 'Didatic Gothic', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: 'Comfortaa', Arial, Helvetica, sans-serif;
+    color:#ff5d7d;
+}
+
+h2{
+    color:#66e0f7;
+}
+
+.teramatica-logo img{
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.container-main {
+    margin-top: 7rem;
+    width: 30rem;
+}
+
+.field-margin-top{
+    margin-top: 2rem;
+}
+
+.btn-teramatica{
+    color:#fff;
+    background-color:#66e0f7;
+    border-color: #66e0f7;
+    width: 100%;
+}
+
+.btn-teramatica:hover{
+    background-color: #2fb9d3;
+    border-color: #2fb9d3;
+}
+
+.btn-editar {
+    background-color: #cad85d;
+    border-color: #cad85d;
+}
+
+.btn-editar:hover{
+    background-color: #acb723;
+    border-color: #acb723;
+}
+
+.btn-deletar {
+    width: 100%;
+    margin-top: 5rem;
+    background-color: #eb5d7d;
+    border-color: #eb5d7d;
+}
+
+.btn-deletar:hover{
+    background-color: #bf2e55;
+    border-color: #bf2e55;
+}

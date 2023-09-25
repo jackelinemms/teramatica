@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "./css/teramatica.css";
+
 import App from "./App"; // quando um arquivo é .js ou .jsx podemos omitir a extensão ao importar, que o transpilador vai ser capaz de traduzir
 // é uma convenção de desenvolvimento react que componentes do projeto são salvos com letra maiúscula, para diferencia-los de outros arquivos .js/.jsx que não são componentes
 import reportWebVitals from "./reportWebVitals";

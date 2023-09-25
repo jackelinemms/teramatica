@@ -1,26 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./components/pages/Login.jsx";
-
 import Aulas from "./components/pages/Aulas.jsx";
 import Users from "./components/pages/Users";
 import Perfil from "./components/pages/Perfil";
 import Cadastrar from "./components/pages/Cadastrar";
 
-import "./bootstrap/style.css";
-
 function App() {
-  //essa é uma função que retorna .jsx -> isso é um componente. Por convenção o nome de componentes sempre começam em maiúscula
   return (
-    // <div className="d-flex main-div justify-content-center">
-    //   <Login />
-    // </div>
     <BrowserRouter>
       <Routes>
         <Route
           path="/"
           element={
-            <div className="d-flex main-div justify-content-center">
+            <div className="d-flex">
               <Login />
             </div>
           }
@@ -28,16 +21,23 @@ function App() {
         <Route
           path="/login"
           element={
-            <div className="d-flex main-div justify-content-center">
+            <div className="d-flex">
               <Login />
             </div>
           }
         />
-        <Route path="/aulas" element={<Aulas />} />
+        <Route
+          path="/aulas"
+          element={
+            <div className="d-flex">
+              <Aulas />
+            </div>
+          }
+        />
         <Route
           path="/cadastro"
           element={
-            <div className="d-flex main-div justify-content-center">
+            <div className="d-flex">
               <Cadastrar />
             </div>
           }
@@ -45,13 +45,20 @@ function App() {
         <Route
           path="/usuarios"
           element={
-            <div className="d-flex main-div justify-content-center">
+            <div className="d-flex">
               <Users />
             </div>
           }
         />
         <Route path="/usuarios/:userId" element={<Perfil />} />\
-        <Route path="*" element={<h1>Página não encontrada!</h1>} />
+        <Route
+          path="*"
+          element={
+            <div className="d-flex">
+              <h1>Página não encontrada!</h1>
+            </div>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

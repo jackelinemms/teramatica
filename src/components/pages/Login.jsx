@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import math from "../../math.svg";
+import math from "../../img/math.svg";
 
 import AppLoading from "../organisms/AppLoading";
 import { saveToken } from "../helpers/Auth";
@@ -37,40 +37,49 @@ export default function Login() {
   return isLoading ? (
     <AppLoading />
   ) : (
-    <div className="form-div">
-      <main className="form-signin">
-        <form onSubmit={handleLogin}>
-          <img className="mb-4" src={math} width="72" height="72" alt="login" />
-          <h1 className="h3 mb-3 fw-normal login-title">Teramatica</h1>
+    <div className="container container-main">
+      <div className="text-center teramatica-logo">
+        <img src={math} alt="login" />
+        <h1>Teramática</h1>
+        <div className="field-margin-top">
+          <h2>Login</h2>
+        </div>
+      </div>
 
-          <div className="form-floating">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder=" "
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <label htmlFor="email">E-mail</label>
-          </div>
-          <div className="form-floating">
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder=" "
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            <label htmlFor="password">Senha</label>
-          </div>
+      <form onSubmit={handleLogin}>
+        <div className="form-floating field-margin-top">
+          <input
+            type="email"
+            className="form-control form-control-lg"
+            id="email"
+            placeholder=" "
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <label htmlFor="email">E-mail</label>
+        </div>
 
-          <button className="w-100 btn btn-lg btn-primary" type="submit">
+        <div className="form-floating field-margin-top">
+          <input
+            type="password"
+            className="form-control form-control-lg"
+            id="password"
+            placeholder=" "
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <label htmlFor="email">Senha</label>
+        </div>
+
+        <div className="text-center field-margin-top">
+          <button
+            className="btn btn-primary btn-lg btn-teramatica"
+            type="submit"
+          >
             Entrar
           </button>
-        </form>
-      </main>
+        </div>
+      </form>
     </div>
   );
 }

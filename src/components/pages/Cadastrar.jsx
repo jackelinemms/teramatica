@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import math from "../../math.svg";
+import math from "../../img/math.svg";
 
 export default function Registrar() {
   const [nome, setNome] = useState("");
@@ -20,58 +20,60 @@ export default function Registrar() {
   };
 
   return (
-    <div className="form-div">
-      <main className="form-register">
-        <form onSubmit={handleFormCadastro}>
-          <img
-            className="mb-4"
-            src={math}
-            width="72"
-            height="72"
-            alt="Teramática"
+    <div className="container container-main">
+      <div className="text-center teramatica-logo">
+        <img src={math} alt="login" />
+        <h1>Teramática</h1>
+        <div className="field-margin-top">
+          <h2>Cadastre-se</h2>
+        </div>
+      </div>
+
+      <form onSubmit={handleFormCadastro}>
+        <div className="form-floating field-margin-top">
+          <input
+            type="text"
+            className="form-control"
+            id="registroNome"
+            placeholder=" "
+            value={nome}
+            onChange={(event) => setNome(event.target.value)}
           />
-          <h1 className="h3 mb-3 fw-normal login-title">Cadastre-se</h1>
+          <label htmlFor="registroNome">Nome</label>
+        </div>
 
-          <div className="form-floating">
-            <input
-              type="text"
-              className="form-control"
-              id="registroNome"
-              placeholder=" "
-              value={nome}
-              onChange={(event) => setNome(event.target.value)}
-            />
-            <label htmlFor="registroNome">Nome</label>
-          </div>
+        <div className="form-floating field-margin-top">
+          <input
+            type="email"
+            className="form-control"
+            id="registroEmail"
+            placeholder=" "
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <label htmlFor="registroEmail">E-mail</label>
+        </div>
+        <div className="form-floating field-margin-top">
+          <input
+            type="password"
+            className="form-control"
+            id="registroPassword"
+            placeholder=" "
+            value={pass}
+            onChange={(event) => setPass(event.target.value)}
+          />
+          <label htmlFor="registroPassword">Senha</label>
+        </div>
 
-          <div className="form-floating">
-            <input
-              type="email"
-              className="form-control"
-              id="registroEmail"
-              placeholder=" "
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <label htmlFor="registroEmail">E-mail</label>
-          </div>
-          <div className="form-floating">
-            <input
-              type="password"
-              className="form-control"
-              id="registroPassword"
-              placeholder=" "
-              value={pass}
-              onChange={(event) => setPass(event.target.value)}
-            />
-            <label htmlFor="registroPassword">Senha</label>
-          </div>
-
-          <button className="w-100 btn btn-lg btn-primary" type="submit">
+        <div className="field-margin-top">
+          <button
+            className="btn btn-primary btn-lg btn-teramatica"
+            type="submit"
+          >
             Cadastrar
           </button>
-        </form>
-      </main>
+        </div>
+      </form>
     </div>
   );
 }
