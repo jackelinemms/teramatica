@@ -10,17 +10,17 @@ export default function Perfil() {
         <h1>Fulano de Tal</h1>
         <div className="field-margin-top">
           {/* email */}
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <label forHtml="email" className="col-sm-2 col-form-label">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <label htmlFor="email" className="col-sm-2 col-form-label">
                   Email
                 </label>
               </div>
-              <div class="col">
+              <div className="col">
                 <input type="email" className="form-control" id="email"></input>
               </div>
-              <div class="col">
+              <div className="col">
                 <button type="button" className="btn btn-primary btn-editar">
                   Editar
                 </button>
@@ -31,23 +31,23 @@ export default function Perfil() {
 
         {/* senha */}
         <div className="field-margin-top">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <label forHtml="password" className="col-sm-2 col-form-label">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <label htmlFor="password" className="col-sm-2 col-form-label">
                   Senha
                 </label>
               </div>
-              <div class="col">
+              <div className="col">
                 <input
                   type="password"
                   className="form-control"
                   id="password"
                 ></input>
               </div>
-              <div class="col">
+              <div className="col">
                 <button type="button" className="btn btn-primary btn-editar">
-                  Editar
+                  <img src={edit} alt="editar" />
                 </button>
               </div>
             </div>
