@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from "./components/pages/Home.jsx";
 import Login from "./components/pages/Login.jsx";
 import Aulas from "./components/pages/Aulas.jsx";
 import Users from "./components/pages/Users";
@@ -12,6 +13,14 @@ function App() {
       <Routes>
         <Route
           path="/"
+          element={
+            <div className="d-flex">
+              <Home />
+            </div>
+          }
+        />
+        <Route
+          path="/login"
           element={
             <div className="d-flex">
               <Login />
@@ -43,18 +52,25 @@ function App() {
           }
         />
         <Route
-          path="/usuarios"
+          path="/users"
           element={
             <div className="d-flex">
               <Users />
             </div>
           }
         />
-        <Route path="/usuarios/:userId" element={<Perfil />} />\
+        <Route
+          path="/users/:userId"
+          element={
+            <div className="d-flex">
+              <Perfil />
+            </div>
+          }
+        />
         <Route
           path="*"
           element={
-            <div className="d-flex">
+            <div className="d-flex vh-100 align-items-center justify-content-center">
               <h1>Página não encontrada!</h1>
             </div>
           }

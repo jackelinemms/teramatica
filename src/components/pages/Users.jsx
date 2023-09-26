@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import math from "../../img/math.svg";
 
@@ -10,6 +10,7 @@ export default function Users() {
 
   const [users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [currentUser, setCurrentUser] = useState("");
 
   React.useEffect(() => {
     const token = getToken();
@@ -43,6 +44,7 @@ export default function Users() {
       </div>
 
       <select
+        onChange={(event) => setCurrentUser(event.target.value)}
         className="form-select form-select-lg field-margin-top"
         aria-label="Default select example"
       >
@@ -50,17 +52,19 @@ export default function Users() {
         {users
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((user) => (
-            <option value={user.id} key={user.id}>
+            <option value={user._id} key={user._id}>
               {user.name}
             </option>
           ))}
       </select>
-      <button
-        className="btn btn-primary btn-lg btn-teramatica field-margin-top"
-        type="submit"
-      >
-        Ver Perfil
-      </button>
+      {!!currentUser && (
+        <button
+          onClick={() => navigate(`/users/${currentUser}`)}
+          className="btn btn-primary btn-lg btn-teramatica field-margin-top"
+        >
+          Ver Perfil
+        </button>
+      )}
     </div>
   );
 }

@@ -25,7 +25,7 @@ export default function Login() {
       .then((response) => response.json())
       .then(({ token }) => {
         saveToken(token);
-        navigate("/usuarios");
+        navigate("/users");
       })
       .catch(() => {
         setEmail("");

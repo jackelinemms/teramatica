@@ -1,13 +1,28 @@
-import React from "react";
-import user from "../../img/user.png";
+import React, { useState, useEffect } from "react";
+import profile from "../../img/user.png";
 import edit from "../../img/edit.svg";
+import { useParams } from "react-router-dom";
 
 export default function Perfil() {
+  const { userId } = useParams();
+
+  const [user, setUser] = useState({}); //vai guardar os dados do usuario
+
+  useEffect(() => {
+    fetch(`https://erin-troubled-duckling.cyclic.app/users/${userId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data);
+      });
+  }, [userId]);
+
+  console.log("user", user);
+
   return (
     <div className="container container-main">
       <div className="text-center teramatica-logo">
-        <img src={user} alt="login" />
-        <h1>Fulano de Tal</h1>
+        <img src={profile} alt="login" />
+        <h1>{user.data.name}</h1>
         <div className="field-margin-top">
           {/* email */}
           <div className="container">
@@ -18,7 +33,8 @@ export default function Perfil() {
                 </label>
               </div>
               <div className="col">
-                <input type="email" className="form-control" id="email"></input>
+                {/* <input type="email" className="form-control" id="email"></input> */}
+                {user.data.email}
               </div>
               <div className="col">
                 <button type="button" className="btn btn-primary btn-editar">
@@ -39,11 +55,12 @@ export default function Perfil() {
                 </label>
               </div>
               <div className="col">
-                <input
+                {/* <input
                   type="password"
                   className="form-control"
                   id="password"
-                ></input>
+                ></input> */}
+                {user.data.password}
               </div>
               <div className="col">
                 <button type="button" className="btn btn-primary btn-editar">
