@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import profile from "../../img/user.png";
 import { useParams } from "react-router-dom";
 import EasyEdit, { Types } from "react-easy-edit";
+import { useNavigate } from "react-router-dom";
 
 export default function Perfil() {
   const { userId } = useParams();
@@ -44,6 +45,18 @@ export default function Perfil() {
     });
   };
 
+  //DELETE
+  const navigate = useNavigate();
+
+  const handleDelete = ({ userId }) => {
+    fetch(`http://localhost:8080/users/${userId}`, {
+      method: "DELETE",
+    }).then((result) => {
+      result.json().then((response) => console.warn(response));
+      navigate("/users");
+    });
+  };
+
   return user.data ? (
     <div className="container container-perfil">
       <div className="text-center teramatica-logo">
@@ -60,6 +73,7 @@ export default function Perfil() {
               </div>
               <div className="col">
                 <EasyEdit
+                  id="email"
                   type={Types.TEXT}
                   value={user.data.email}
                   onSave={(val) => setcurrentEmail(val)}
@@ -87,8 +101,9 @@ export default function Perfil() {
                   Senha
                 </label>
               </div>
-              <div className="col" id="userEmail">
+              <div className="col">
                 <EasyEdit
+                  id="password"
                   type={Types.TEXT}
                   value={user.data.password}
                   onSave={(val) => setcurrentPassword(val)}
@@ -108,7 +123,11 @@ export default function Perfil() {
         </div>
 
         <div className="field-margin-top">
-          <button className="btn btn-primary btn-lg btn-deletar" type="submit">
+          <button
+            className="btn btn-primary btn-lg btn-deletar"
+            type="submit"
+            onClick={handleDelete}
+          >
             Deletar Conta
           </button>
         </div>
