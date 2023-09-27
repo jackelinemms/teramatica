@@ -3,6 +3,7 @@ import profile from "../../img/user.png";
 import { useParams } from "react-router-dom";
 import EasyEdit, { Types } from "react-easy-edit";
 import { useNavigate } from "react-router-dom";
+import { Alert } from "@mui/material";
 
 export default function Perfil() {
   const { userId } = useParams();
@@ -27,8 +28,8 @@ export default function Perfil() {
       body: JSON.stringify({ email: currentEmail }),
       headers: { "Content-Type": "application/json" },
     }).then((result) => {
-      result.json().then((response) => {
-        console.log(response);
+      result.json().then(() => {
+        window.alert("Email atualizado com sucesso!");
       });
     });
   };
@@ -39,8 +40,8 @@ export default function Perfil() {
       body: JSON.stringify({ password: currentPassword }),
       headers: { "Content-Type": "application/json" },
     }).then((result) => {
-      result.json().then((response) => {
-        console.log(response);
+      result.json().then(() => {
+        window.alert("Senha atualizada com sucesso!");
       });
     });
   };
@@ -48,11 +49,12 @@ export default function Perfil() {
   //DELETE
   const navigate = useNavigate();
 
-  const handleDelete = ({ userId }) => {
+  const handleDelete = () => {
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((response) => console.warn(response));
+      window.alert("Usuário deletado com sucesso!");
       navigate("/users");
     });
   };
