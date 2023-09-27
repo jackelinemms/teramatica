@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import profile from "../../img/user.png";
-import edit from "../../img/edit.svg";
 import { useParams } from "react-router-dom";
+import EasyEdit, { Types } from "react-easy-edit";
 
 export default function Perfil() {
   const { userId } = useParams();
@@ -16,10 +16,36 @@ export default function Perfil() {
       });
   }, [userId]);
 
-  console.log("user", user);
+  //UPDATE
+  const [currentEmail, setcurrentEmail] = useState("");
+  const [currentPassword, setcurrentPassword] = useState("");
 
-  return (
-    <div className="container container-main">
+  const handlePatchEmail = () => {
+    fetch(`https://erin-troubled-duckling.cyclic.app/users/${userId}`, {
+      method: "PATCH",
+      body: JSON.stringify({ email: currentEmail }),
+      headers: { "Content-Type": "application/json" },
+    }).then((result) => {
+      result.json().then((response) => {
+        console.log(response);
+      });
+    });
+  };
+
+  const handlePatchSenha = () => {
+    fetch(`https://erin-troubled-duckling.cyclic.app/users/${userId}`, {
+      method: "PATCH",
+      body: JSON.stringify({ password: currentPassword }),
+      headers: { "Content-Type": "application/json" },
+    }).then((result) => {
+      result.json().then((response) => {
+        console.log(response);
+      });
+    });
+  };
+
+  return user.data ? (
+    <div className="container container-perfil">
       <div className="text-center teramatica-logo">
         <img src={profile} alt="login" />
         <h1>{user.data.name}</h1>
@@ -28,17 +54,24 @@ export default function Perfil() {
           <div className="container">
             <div className="row">
               <div className="col">
-                <label htmlFor="email" className="col-sm-2 col-form-label">
+                <label htmlFor="email" className="col-sm-4 col-form-label">
                   Email
                 </label>
               </div>
               <div className="col">
-                {/* <input type="email" className="form-control" id="email"></input> */}
-                {user.data.email}
+                <EasyEdit
+                  type={Types.TEXT}
+                  value={user.data.email}
+                  onSave={(val) => setcurrentEmail(val)}
+                />
               </div>
               <div className="col">
-                <button type="button" className="btn btn-primary btn-editar">
-                  Editar
+                <button
+                  type="button"
+                  className="btn btn-primary btn-editar"
+                  onClick={handlePatchEmail}
+                >
+                  Salvar
                 </button>
               </div>
             </div>
@@ -50,21 +83,24 @@ export default function Perfil() {
           <div className="container">
             <div className="row">
               <div className="col">
-                <label htmlFor="password" className="col-sm-2 col-form-label">
+                <label htmlFor="password" className="col-sm-4 col-form-label">
                   Senha
                 </label>
               </div>
-              <div className="col">
-                {/* <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                ></input> */}
-                {user.data.password}
+              <div className="col" id="userEmail">
+                <EasyEdit
+                  type={Types.TEXT}
+                  value={user.data.password}
+                  onSave={(val) => setcurrentPassword(val)}
+                />
               </div>
               <div className="col">
-                <button type="button" className="btn btn-primary btn-editar">
-                  <img src={edit} alt="editar" />
+                <button
+                  type="button"
+                  className="btn btn-primary btn-editar"
+                  onClick={handlePatchSenha}
+                >
+                  Salvar
                 </button>
               </div>
             </div>
@@ -78,5 +114,7 @@ export default function Perfil() {
         </div>
       </div>
     </div>
+  ) : (
+    <h1>Carregando....</h1>
   );
 }
