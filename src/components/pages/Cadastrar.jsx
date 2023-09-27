@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import math from "../../img/math.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Registrar() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const navigate = useNavigate();
 
   const handleFormCadastro = (event) => {
     event.preventDefault();
@@ -13,9 +15,11 @@ export default function Registrar() {
       body: JSON.stringify({ name: nome, email: email, password: pass }),
       headers: { "Content-Type": "application/json" },
     }).then(() => {
+      window.alert("Usuário cadastrado com sucesso!");
       setNome("");
       setEmail("");
       setPass("");
+      navigate("/login");
     });
   };
 

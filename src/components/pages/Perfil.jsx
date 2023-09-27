@@ -3,7 +3,7 @@ import profile from "../../img/user.png";
 import { useParams } from "react-router-dom";
 import EasyEdit, { Types } from "react-easy-edit";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "@mui/material";
+import AppLoading from "../organisms/AppLoading";
 
 export default function Perfil() {
   const { userId } = useParams();
@@ -50,7 +50,7 @@ export default function Perfil() {
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`https://erin-troubled-duckling.cyclic.app/users/${userId}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((response) => console.warn(response));
@@ -136,6 +136,6 @@ export default function Perfil() {
       </div>
     </div>
   ) : (
-    <h1>Carregando....</h1>
+    <AppLoading />
   );
 }
